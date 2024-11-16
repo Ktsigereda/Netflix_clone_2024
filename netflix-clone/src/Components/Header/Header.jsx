@@ -44,6 +44,7 @@ const Header = () => {
     <li><SearchIcon/></li>
     <li><NotificationsNoneIcon/> </li>
     <li><AccountBoxIcon/></li>
+
     <li><ArrowDropDownIcon/></li>
  <li><img className="nav__avatar"
  src={AvatoLogo} alt="Avator logo"  /></li>

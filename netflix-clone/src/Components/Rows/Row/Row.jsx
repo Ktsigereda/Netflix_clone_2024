@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from "../../../Utils/axios"
 import movieTrailer from 'movie-trailer';
 import YouTube from 'react-youtube';
+
 const Row = ({ title, fetchUrl, isLargeRow }) => {
     const [movies, setMovie] = useState([]);
     const [trailerUrl, setTrailerUrl] = useState("");
@@ -16,8 +17,10 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
             try {
                 // console.log(fetchUrl)
                 const request = await axios.get(fetchUrl);
+       //"https://api.themoviedb.org/3/discover/tv?api_key=beb0199bd600477e8ed1962066d67a4b&with_networks=213"         
                 // console.log(request)
                 setMovie(request.data.results);
+                //    console.log(request.data.results)
             } catch (error) {
                 console.log("error", error);
             }
@@ -66,3 +69,4 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
 }
 
 export default Row
+
