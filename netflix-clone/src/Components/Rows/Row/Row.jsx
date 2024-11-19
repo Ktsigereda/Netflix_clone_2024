@@ -1,4 +1,4 @@
-import React from 'react';
+
 import "./Row.css"
 import { useEffect, useState } from 'react'
 import axios from "../../../Utils/axios"
@@ -10,17 +10,13 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     const [trailerUrl, setTrailerUrl] = useState("");
 
     const base_url = "https://image.tmdb.org/t/p/original";
-
-
     useEffect(() => {
         (async () => {
             try {
                 // console.log(fetchUrl)
                 const request = await axios.get(fetchUrl);
-       //"https://api.themoviedb.org/3/discover/tv?api_key=beb0199bd600477e8ed1962066d67a4b&with_networks=213"         
                 // console.log(request)
                 setMovie(request.data.results);
-                //    console.log(request.data.results)
             } catch (error) {
                 console.log("error", error);
             }
@@ -29,18 +25,19 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
 
     const handleClick = (movie) => {
         if (trailerUrl) {
-            setTrailerUrl('')
+            setTrailerUrl('');
         } else {
-            movieTrailer(movie?.title || movie?.name || movie?.original_name)
-                .then((url) => {
+            movieTrailer(movie?.title || movie?.name || movie?.original_name).then(
+                (url) => {
                     console.log(url)
                     const urlParams = new URLSearchParams(new URL(url).search)
                     console.log(urlParams)
                     console.log(urlParams.get('v'))
                     setTrailerUrl(urlParams.get('v'));
-                })
+                }
+            ).catch((err)=>alert("Trailer Not Found"))
         }
-    }
+    };
 
     const opts = {
         height: '390',
@@ -57,16 +54,20 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                 {movies?.map((movie, index) => (
                     <img
                         onClick={() => handleClick(movie)}
-                        key={index} src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                        key={index} 
+                        src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} 
+                        alt={movie.name} 
+                        className={`row__poster ${isLargeRow && "row__posterLarge"}`}
                     />
                 ))}
             </div>
-            <div style={{ padding: '10px' }}>
+            <div style={{ padding: '40px' }}>
                 {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
             </div>
         </div>
-    )
-}
+    );
+};
+
 
 export default Row
 

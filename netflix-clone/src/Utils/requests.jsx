@@ -1,5 +1,7 @@
-// const API_KEY = process.env.REACT_APP_API_KEY;
-const API_KEY = "beb0199bd600477e8ed1962066d67a4b";
+const API_KEY = import.meta.env.VITE_API_KEY;
+// const API_KEY="beb0199bd600477e8ed1962066d67a4b";
+
+
 
 const requests = {
     fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,

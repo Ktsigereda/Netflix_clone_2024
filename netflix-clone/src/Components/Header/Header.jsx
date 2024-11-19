@@ -1,4 +1,3 @@
-import React from 'react';
 import "./header.css"
 import NetflixLogo from "../../assets/images/Netflix_logo.svg.png"
 import AvatoLogo from "../../assets/images/Avator logo.png"
@@ -17,16 +16,14 @@ const Header = () => {
                 handleShow(true);
             } else handleShow(false);
         };
-
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-
-
   return (
-  <div className={`header_outer_container ${show && "nav__black"}`}>
+   <div className={`header_outer_container 
+   ${show && "nav__black"}`}>
     <div className='header_container'>
       <div className='header_left'>
         <ul>
@@ -44,15 +41,13 @@ const Header = () => {
     <li><SearchIcon/></li>
     <li><NotificationsNoneIcon/> </li>
     <li><AccountBoxIcon/></li>
-
-    <li><ArrowDropDownIcon/></li>
- <li><img className="nav__avatar"
+         <li><img className="nav__avatar"
  src={AvatoLogo} alt="Avator logo"  /></li>
+    <li><ArrowDropDownIcon/></li>
   </ul>
     </div>
     </div>
     </div>
-
   );
 }
 
