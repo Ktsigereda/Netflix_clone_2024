@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/Ktsigereda/Netflix_clone_2024/",
+  "homepage": "https://ktsigereda.github.io/Netflix_clone_2024/",
   "scripts": {
     "dev": "vite",
     "predeploy":"npm run build",
